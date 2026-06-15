@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Thinking Brief · Whatfix Labs · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.30.0/tabler-icons.min.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0A0A0A;
+  color: #F0F0F0;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero { padding: 40px 0 0; }
+.hero-title {
+  font-size: 28px;
+  font-weight: 300;
+  color: #F0F0F0;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.hero-sub {
+  font-size: 14px;
+  color: #A0A0A0;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.hero-meta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.meta-chip {
+  font-size: 12px;
+  color: #A0A0A0;
+  background: #141414;
+  border: 0.5px solid #3A3A3A;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1;
+}
+.hero-divider { border: none; border-top: 1px solid #E5383B; margin: 0 0 0; }
+
+/* Tab bar */
+.tab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #0A0A0A;
+  border-bottom: 0.5px solid #2A2A2A;
+  padding: 0;
+  margin: 0 -24px;
+  overflow: hidden;
+}
+.tab-bar-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.tab-bar-inner::-webkit-scrollbar { display: none; }
+.tab {
+  flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #606060;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.tab:hover { color: #A0A0A0; }
+.tab.active {
+  color: #F0F0F0;
+  border-bottom-color: #E5383B;
+}
+
+/* Section */
+.section { padding-top: 48px; }
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E5383B;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #F0F0F0;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.body-text {
+  font-size: 14px;
+  color: #A0A0A0;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.body-text strong { color: #F0F0F0; font-weight: 500; }
+
+/* Cards */
+.card {
+  background: #161616;
+  border: 0.5px solid #2A2A2A;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #F0F0F0;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-body { font-size: 13px; color: #A0A0A0; line-height: 1.7; }
+
+/* Callout */
+.callout {
+  border-left: 2px solid #E5383B;
+  background: #141414;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.callout-text { font-size: 13px; color: #A0A0A0; line-height: 1.7; }
+.callout-text strong { color: #F0F0F0; font-weight: 500; }
+
+/* Tags */
+.tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  display: inline-block;
+}
+.tag-red { background: #2A0A0A; color: #E5383B; }
+.tag-green { background: #0A1A0A; color: #4ADE80; }
+.tag-amber { background: #1A1400; color: #FBBF24; }
+.tag-blue { background: #0A0A2A; color: #60A5FA; }
+
+/* Two-col grid */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Table */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; font-size: 13px; border-collapse: collapse; }
+table th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #606060;
+  padding: 0 12px 10px 0;
+}
+table td { padding: 10px 12px 10px 0; color: #A0A0A0; vertical-align: top; border-bottom: 0.5px solid #2A2A2A; }
+table td:first-child { font-weight: 500; color: #F0F0F0; }
+table tr.row-alt td { background: #141414; }
+
+/* Agent loop grid */
+.loop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+  margin: 16px 0;
+}
+.loop-box {
+  background: #161616;
+  border: 0.5px solid #2A2A2A;
+  padding: 14px 16px;
+  position: relative;
+  min-height: 72px;
+}
+.loop-box-title { font-size: 12px; font-weight: 500; color: #F0F0F0; margin-bottom: 4px; }
+.loop-box-sub { font-size: 11px; color: #A0A0A0; line-height: 1.5; }
+.loop-box.highlighted {
+  background: #1A0A0A;
+  border-left: 2px solid #E5383B;
+}
+.loop-box.amber {
+  background: #1A1400;
+  border-left: 2px solid #FBBF24;
+}
+.loop-arrow-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 28px;
+  position: relative;
+}
+.loop-arrow-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.loop-arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #606060;
+}
+.loop-arrow-cell::before,
+.loop-arrow-cell::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  background: #606060;
+  width: 50%;
+}
+.loop-arrow-cell::before { left: 0; }
+.loop-arrow-cell::after { right: 0; }
+.loop-arrow-cell:first-child::before { display: none; }
+.loop-arrow-cell:last-child::after { display: none; }
+
+/* Eval bars */
+.eval-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid #2A2A2A;
+}
+.eval-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #F0F0F0;
+  width: 160px;
+  flex-shrink: 0;
+}
+.eval-track {
+  flex: 1;
+  height: 6px;
+  background: #2A2A2A;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.eval-fill {
+  height: 100%;
+  border-radius: 3px;
+  width: 0;
+  transition: width 600ms ease-out;
+}
+.eval-fill.primary { background: #E5383B; }
+.eval-fill.secondary { background: #606060; }
+.eval-fill.safety { background: #FBBF24; }
+.eval-label {
+  font-size: 11px;
+  width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Trust stepper */
+.stepper {
+  position: relative;
+  padding-left: 32px;
+}
+.stepper::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: #2A2A2A;
+}
+.stepper-item {
+  position: relative;
+  padding: 0 0 24px 20px;
+}
+.stepper-item:last-child { padding-bottom: 0; }
+.stepper-dot {
+  position: absolute;
+  left: -27px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: #0A0A0A;
+  z-index: 1;
+}
+.stepper-dot.green { border-color: #4ADE80; }
+.stepper-dot.amber { border-color: #FBBF24; }
+.stepper-dot.red { border-color: #E5383B; }
+.stepper-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #F0F0F0;
+  margin-bottom: 4px;
+}
+.stepper-body { font-size: 13px; color: #A0A0A0; line-height: 1.6; }
+
+/* Cost stats */
+.stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+.stat-display { }
+.stat-number {
+  font-size: 36px;
+  font-weight: 300;
+  color: #F0F0F0;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.stat-desc { font-size: 13px; color: #A0A0A0; line-height: 1.5; }
+.stat-body { font-size: 12px; color: #606060; line-height: 1.5; margin-top: 8px; }
+
+/* Question list */
+.q-list { }
+.q-item {
+  padding: 20px 0;
+  border-bottom: 0.5px solid #2A2A2A;
+}
+.q-item:first-child { padding-top: 0; }
+.q-item:last-child { border-bottom: none; }
+.q-num {
+  font-size: 32px;
+  font-weight: 300;
+  color: #E5383B;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.q-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #F0F0F0;
+  margin-bottom: 6px;
+}
+.q-body { font-size: 13px; color: #A0A0A0; line-height: 1.7; }
+
+/* Explore button */
+.explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #E5383B;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: 0 0 2px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: border-color 0.15s;
+}
+.explore-btn:hover { border-bottom-color: #E5383B; }
+
+/* Footer */
+.footer {
+  font-size: 12px;
+  color: #606060;
+  line-height: 1.7;
+  padding: 32px 0 48px;
+  border-top: 0.5px solid #2A2A2A;
+  margin-top: 48px;
+}
+.footer a { color: #E5383B; text-decoration: underline; }
+
+/* Technical panel */
+/* Side panel */
+.panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.panel-overlay.open { opacity: 1; pointer-events: auto; }
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 38%;
+  height: 100%;
+  background: #0D0D0D;
+  border-left: 0.5px solid #2A2A2A;
+  z-index: 201;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  padding: 0;
+}
+.panel.open { transform: translateX(0); }
+.panel-header {
+  position: sticky;
+  top: 0;
+  background: #0D0D0D;
+  border-bottom: 0.5px solid #2A2A2A;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+.panel-header span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #E5383B;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.panel-close {
+  background: none;
+  border: none;
+  color: #606060;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  transition: color 0.15s;
+}
+.panel-close:hover { color: #F0F0F0; }
+.panel-content { padding: 20px; }
+.panel-content h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #F0F0F0;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.panel-content p {
+  font-size: 13px;
+  color: #A0A0A0;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.panel-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px 0;
+}
+.panel-content ul li {
+  font-size: 13px;
+  color: #A0A0A0;
+  line-height: 1.75;
+  padding: 4px 0 4px 20px;
+  position: relative;
+}
+.panel-content ul li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 12px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #E5383B;
+}
+.panel-content table {
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+  margin-bottom: 14px;
+}
+.panel-content table th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #606060;
+  padding: 0 8px 8px 0;
+}
+.panel-content table td {
+  padding: 6px 8px 6px 0;
+  color: #A0A0A0;
+  border-bottom: 0.5px solid #2A2A2A;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.panel-content table td:first-child { font-weight: 500; color: #F0F0F0; }
+.panel-content .panel-callout {
+  border-left: 2px solid #E5383B;
+  background: #1A0A0A;
+  padding: 12px 14px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: #A0A0A0;
+  line-height: 1.7;
+}
+.panel-content .panel-callout strong { color: #F0F0F0; font-weight: 500; }
+@media (max-width: 768px) {
+  .panel { width: 90%; }
+}
+
+.tech-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #E5383B;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: 0 0 2px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: border-color 0.15s;
+}
+.tech-cta:hover { border-bottom-color: #E5383B; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .hero-title { font-size: 24px; }
+  .tab-bar-inner { padding: 0 20px; }
+  .two-col { grid-template-columns: 1fr; }
+  .stat-row { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero-title { font-size: 22px; }
+  .hero-meta { gap: 8px; }
+  .tab { padding: 10px 12px; font-size: 11px; }
+  .tab-bar-inner { padding: 0 16px; }
+  .loop-grid { grid-template-columns: repeat(3, 1fr); }
+  .loop-box { padding: 10px 12px; min-height: 60px; }
+  .loop-box-title { font-size: 11px; }
+  .loop-box-sub { font-size: 10px; }
+  .eval-item { flex-wrap: wrap; gap: 6px; }
+  .eval-name { width: 100%; }
+  .eval-label { width: auto; }
+  .stat-number { font-size: 28px; }
+  .section { padding-top: 36px; }
+  table { font-size: 12px; }
+  table td { padding: 8px 8px 8px 0; }
+  table th { padding: 0 8px 8px 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Disclaimer -->
+  <div style="background: #141414; border: 0.5px solid #2A2A2A; border-radius: 6px; padding: 12px 16px; margin-top: 32px; display: flex; gap: 10px; align-items: flex-start;">
+    <span style="font-size: 11px; font-weight: 500; color: #E5383B; letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; line-height: 1.5;">Disclaimer</span>
+    <p style="font-size: 12px; color: #A0A0A0; line-height: 1.6; margin: 0;">This case study is a hypothesis-driven analysis based solely on publicly available information about Whatfix and Seek. The recommendations presented do not reflect internal knowledge of Seek's architecture, roadmap, or customer deployments.</p>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-title">Seek: From the world's first enterprise UI agent<br>to the platform it needs to become</div>
+    <div class="hero-sub">A structured analysis of Seek's architecture, open challenges, and the product decisions that will determine whether it earns enterprise trust at scale.</div>
+    <div class="hero-meta">
+      <span class="meta-chip"><i class="ti ti-building" aria-hidden="true"></i> Tanya Singh · AI Product Developer</span>
+      <span class="meta-chip"><i class="ti ti-target" aria-hidden="true"></i> Product Management </span>
+      <span class="meta-chip"><i class="ti ti-calendar" aria-hidden="true"></i> Seek · Post-Salesforce launch window</span>
+    </div>
+    <hr class="hero-divider">
+  </div>
+
+  <!-- Tab bar (sticky) -->
+  <div class="tab-bar" id="tabBar">
+    <div class="tab-bar-inner" id="tabBarInner">
+      <button class="tab active" data-section="context">Context</button>
+      <button class="tab" data-section="architecture">Agent Architecture</button>
+      <button class="tab" data-section="expansion">Next Application</button>
+      <button class="tab" data-section="evals">Evals Framework</button>
+      <button class="tab" data-section="trust">Trust &amp; Governance</button>
+      <button class="tab" data-section="cost">Cost &amp; Efficiency</button>
+      <button class="tab" data-section="questions">30-Day Questions</button>
+    </div>
+  </div>
+
+  <!-- Context -->
+  <div class="section" id="context">
+    <div class="section-label">Why this matters now</div>
+    <p class="body-text">Seek achieved something genuinely remarkable: it became the first AI agent to complete Salesforce Trailhead Admin Beginner and Intermediate courses, validating UI-first automation at the level of a certified Salesforce administrator. That's not a demo milestone. That's a proof-of-capability that changes what enterprise buyers believe is possible.</p>
+    <div class="callout">
+      <div class="callout-text"><strong>The market is at an inflection point. A good percentage of new enterprise buyers in H2 2025 have adopted AI Agents as part of their rollout.</strong> The window to establish Seek as the default enterprise agentic layer, before Microsoft Copilot, Salesforce Agentforce, and ServiceNow Now Assist consolidate is roughly 12–18 months. The product decisions made in this window are permanent.</div>
+    </div>
+    <div class="two-col" style="margin-top:20px">
+      <div class="card">
+        <div class="card-title"><i class="ti ti-check" aria-hidden="true"></i> What's validated</div>
+        <div class="card-body">UI-first automation that bypasses API limits. Multi-step task completion in live enterprise systems. Human-agent handoff on the same UI surface. Salesforce admin-level capability in controlled testing.</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="ti ti-question-mark" aria-hidden="true"></i> What's still open</div>
+        <div class="card-body">Accuracy at scale across real, messy enterprise data. Token cost per task at enterprise volume. Trust and governance layer for production deployment. The next application beyond Salesforce.</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:24px">Assumptions I'd validate first</div>
+    <p class="body-text">Based on publicly available information and my experience building enterprise AI systems, these are the assumptions I would seek to validate before making long-term product investments:</p>
+
+    <div class="card">
+      <table>
+        <tr style="border-bottom:0.5px solid #2A2A2A">
+          <td style="width:180px">Token economics at enterprise scale</td>
+          <td>How does the cost per completed task evolve as workflow complexity, context length, and enterprise-wide adoption increase, and what optimizations are required to ensure sustainable unit economics?</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #2A2A2A">
+          <td>Trust and governance for production deployment</td>
+          <td>What level of human oversight, auditability, approval mechanisms, and policy controls is necessary to enable broad customer adoption while maintaining safety and compliance?</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #2A2A2A">
+          <td>Evaluation rigor across customer environments</td>
+          <td>How can Seek establish robust evaluation benchmarks that remain reliable across heterogeneous enterprise processes, varying data quality, and evolving customer use cases?</td>
+        </tr>
+        <tr>
+          <td>Strategic expansion priorities</td>
+          <td>Beyond Salesforce-centric workflows, which adjacent enterprise ecosystems represent the strongest combination of customer value, implementation feasibility, and competitive differentiation?</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Agent Architecture -->
+  <div class="section" id="architecture">
+    <div class="section-label">How Seek works — and where the PM decisions live</div>
+    <p class="body-text">Seek's architecture looks like a multi-step agent loop. Each step is both a technical implementation and a product decision. Understanding where PM judgment intersects the engineering is the starting point for everything else.</p>
+
+    <!-- Row 1 -->
+    <div class="loop-grid">
+      <div class="loop-box">
+        <div class="loop-box-title">User instruction</div>
+        <div class="loop-box-sub">Natural language command from admin or developer</div>
+      </div>
+      <div class="loop-box highlighted">
+        <div class="loop-box-title">Context engineering</div>
+        <div class="loop-box-sub">ScreenSense reads screen state + infers intent</div>
+      </div>
+      <div class="loop-box">
+        <div class="loop-box-title">Task planning</div>
+        <div class="loop-box-sub">LLM decomposes intent into sub-steps</div>
+      </div>
+    </div>
+    <div class="loop-arrow-row">
+      <div class="loop-arrow-cell"></div>
+      <div class="loop-arrow-cell"><div class="loop-arrow-down"></div></div>
+      <div class="loop-arrow-cell"></div>
+    </div>
+    <!-- Row 2 -->
+    <div class="loop-grid">
+      <div class="loop-box highlighted">
+        <div class="loop-box-title">Tool calling</div>
+        <div class="loop-box-sub">UI interactions via structured outputs</div>
+      </div>
+      <div class="loop-box amber">
+        <div class="loop-box-title">Trust checkpoint</div>
+        <div class="loop-box-sub">Confirm / auto-execute / escalate to human</div>
+      </div>
+      <div class="loop-box">
+        <div class="loop-box-title">Execution</div>
+        <div class="loop-box-sub">Action on live enterprise system UI</div>
+      </div>
+    </div>
+    <div class="loop-arrow-row">
+      <div class="loop-arrow-cell"></div>
+      <div class="loop-arrow-cell"><div class="loop-arrow-down"></div></div>
+      <div class="loop-arrow-cell"></div>
+    </div>
+    <!-- Row 3 -->
+    <div class="loop-grid">
+      <div class="loop-box">
+        <div class="loop-box-title">Outcome verification</div>
+        <div class="loop-box-sub">Did the action produce the intended state?</div>
+      </div>
+      <div class="loop-box highlighted">
+        <div class="loop-box-title">Eval signal</div>
+        <div class="loop-box-sub">Task accuracy, error type, rollback needed?</div>
+      </div>
+      <div class="loop-box">
+        <div class="loop-box-title">Audit log</div>
+        <div class="loop-box-sub">What did Seek do, when, and why?</div>
+      </div>
+    </div>
+
+    <button class="tech-cta" onclick="togglePanel('techPanel', 'overlayTech')">Optional Technical Deep Dives <span>→</span></button>
+
+    <div class="callout" style="margin-top:20px">
+      <div class="callout-text"><strong>PM perspective in this loop:</strong> The trust checkpoint (step 5) struck me as the highest-leverage point for product decisions in an agentic system. Choices around which actions auto-execute, require preview, or demand explicit approval ultimately determine user trust, adoption, and acceptable levels of autonomy.</div>
+    </div>
+
+    <div class="section-title" style="margin-top:24px">Where each concept plugs in</div>
+    <div class="card" style="margin-top:12px">
+      <table>
+        <tr style="border-bottom:0.5px solid #2A2A2A">
+          <td style="width:180px">Context engineering</td>
+          <td>What information Seek chooses to carry forward influences both the quality of its actions and the cost of executing them. More context can improve grounding, but not every task may justify the additional latency and token expenditure.</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #2A2A2A">
+          <td>Structured outputs</td>
+          <td>Reliable execution depends on translating intent into predictable actions. The way these actions are represented determines how confidently Seek can interact with enterprise systems at scale.</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #2A2A2A">
+          <td>Tool-calling reliability</td>
+          <td>One question I kept returning to was how Seek should behave when reality differs from expectation, for ex, when a UI element is missing or has changed. The response to these situations influences both user trust and task completion rates.</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #2A2A2A">
+          <td>Token efficiency</td>
+          <td>At enterprise scale, every additional reasoning step, retry, and piece of context has a cost. This makes efficiency not just an engineering concern, but a product consideration tied directly to sustainable adoption.</td>
+        </tr>
+        <tr>
+          <td>Agent cost optimization</td>
+          <td>Not all tasks require the same level of intelligence. Simpler workflows may benefit from lighter-weight models, while complex, multi-step tasks justify the use of more capable models. Determining where that threshold lies is an important trade-off between capability and economics.</td>
+        </tr>
+      </table>
+    </div>
+    <button class="explore-btn" onclick="togglePanel('trustPanel', 'overlayTrust')">Go deeper on trust checkpoint <span>→</span></button>
+  </div>
+
+  <!-- Next Application -->
+  <div class="section" id="expansion">
+    <div class="section-label">Where Seek goes after Salesforce</div>
+    <p class="body-text">Deciding where Seek expands next is ultimately a product prioritization problem. To evaluate the trade-offs, I used the following framework and arrived at the recommendation below.</p>
+
+    <div class="section-title">Evaluation matrix</div>
+    <div class="card" style="margin-top:12px">
+      <div class="table-wrap">
+      <table style="min-width:500px">
+        <thead>
+          <tr>
+            <th style="width:130px">Application</th>
+            <th>Admin pain</th>
+            <th>UI complexity</th>
+            <th>Buyer overlap</th>
+            <th>Competitive space</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ServiceNow</td>
+            <td><span class="tag tag-green">High</span></td>
+            <td><span class="tag tag-amber">Very high</span></td>
+            <td><span class="tag tag-green">Strong</span></td>
+            <td><span class="tag tag-green">Open</span></td>
+            <td><strong>9/10</strong></td>
+          </tr>
+          <tr>
+            <td>SAP S/4HANA</td>
+            <td><span class="tag tag-green">Very high</span></td>
+            <td><span class="tag tag-red">Extreme</span></td>
+            <td><span class="tag tag-amber">Moderate</span></td>
+            <td><span class="tag tag-green">Open</span></td>
+            <td><strong>8/10</strong></td>
+          </tr>
+          <tr>
+            <td>Workday</td>
+            <td><span class="tag tag-green">High</span></td>
+            <td><span class="tag tag-amber">High</span></td>
+            <td><span class="tag tag-green">Strong</span></td>
+            <td><span class="tag tag-amber">Emerging</span></td>
+            <td><strong>7/10</strong></td>
+          </tr>
+          <tr>
+            <td>M365 / SharePoint</td>
+            <td><span class="tag tag-amber">Medium</span></td>
+            <td><span class="tag tag-blue">Medium</span></td>
+            <td><span class="tag tag-green">Strong</span></td>
+            <td><span class="tag tag-red">Copilot owns it</span></td>
+            <td><strong>4/10</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:16px">
+      <div class="callout-text"><strong>Recommendation: ServiceNow ITSM.</strong> The admin pain is severe (complex flow builders, catalog item configuration, approval chain setup) and highly repetitive. The competitive space is open, no incumbent AI agent has achieved what Seek demonstrated with Trailhead. Whatfix already has enterprise customers with ServiceNow deployments. The UI first approach is particularly valuable here because ServiceNow's API surface is incomplete for many admin tasks. This mirrors exactly the conditions that made Salesforce the right first target.</div>
+    </div>
+
+    <div class="callout" style="margin-top:12px; border-left-color: #FBBF24">
+      <div class="callout-text"><strong>Personal angle:</strong> SAP S/4HANA is the one I know from the inside. The admin pain is real and extreme transaction codes, configuration tables, role-based access setup. The opportunity is massive. The risk is technical complexity and SAP's own AI investments (Joule). Worth a separate strategic discussion.</div>
+    </div>
+  </div>
+
+  <!-- Evals Framework -->
+  <div class="section" id="evals">
+    <div class="section-label">Evaluation framework for an agentic product</div>
+    <div class="callout">
+      <div class="callout-text"><strong>The core problem:</strong> Traditional PM metrics (DAU, session length, NPS) measure engagement. Seek's value is the inverse - the better it works, the less users interact with it. We need task-level accuracy metrics, not usage metrics.</div>
+    </div>
+
+    <div class="section-title" style="margin-top:20px">Eval dimensions for Seek</div>
+
+    <div style="margin-top:12px">
+      <div class="eval-item">
+        <div class="eval-name">Task completion rate</div>
+        <div class="eval-track"><div class="eval-fill primary" data-width="90"></div></div>
+        <div class="eval-label"><span class="tag tag-green">Primary</span></div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-name">Outcome accuracy</div>
+        <div class="eval-track"><div class="eval-fill primary" data-width="85"></div></div>
+        <div class="eval-label"><span class="tag tag-green">Primary</span></div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-name">Human intervention rate</div>
+        <div class="eval-track"><div class="eval-fill secondary" data-width="70"></div></div>
+        <div class="eval-label"><span class="tag tag-blue">Secondary</span></div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-name">Error severity distribution</div>
+        <div class="eval-track"><div class="eval-fill secondary" data-width="65"></div></div>
+        <div class="eval-label"><span class="tag tag-blue">Secondary</span></div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-name">Time-to-completion vs baseline</div>
+        <div class="eval-track"><div class="eval-fill secondary" data-width="75"></div></div>
+        <div class="eval-label"><span class="tag tag-blue">Secondary</span></div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-name">Rollback frequency</div>
+        <div class="eval-track"><div class="eval-fill safety" data-width="50"></div></div>
+        <div class="eval-label"><span class="tag tag-amber">Safety</span></div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-name">Cascading error rate</div>
+        <div class="eval-track"><div class="eval-fill safety" data-width="40"></div></div>
+        <div class="eval-label"><span class="tag tag-amber">Safety</span></div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:24px">Eval set construction</div>
+    <div class="two-col" style="margin-top:12px">
+      <div class="card">
+        <div class="card-title"><i class="ti ti-list-check" aria-hidden="true"></i> Task taxonomy</div>
+        <div class="card-body">Bucket tasks by reversibility (high/medium/low) and complexity (single-step vs multi-step). Eval set needs coverage across all quadrants, not just the happy path.</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Edge case seeding</div>
+        <div class="card-body">Deliberately include ambiguous instructions, partially complete system states, and UI layouts that differ from training data. These are where agent failures happen in production.</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="ti ti-users" aria-hidden="true"></i> Human baseline</div>
+        <div class="card-body">Every eval task needs a certified Salesforce admin to complete it first. Seek's score is measured against that baseline not against an abstract accuracy target.</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="ti ti-refresh" aria-hidden="true"></i> Regression suite</div>
+        <div class="card-body">As Seek improves, the eval set must grow. Every production failure becomes a new eval case. This turns real errors into systematic improvement signals.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust & Governance -->
+  <div class="section" id="trust">
+    <div class="section-label">Trust &amp; governance layer</div>
+    <p class="body-text">Trust is a repeatedly surfaced keyword when considering products like Seek. Enterprise users are ultimately delegating actions on live systems, making adoption dependent not just on capability, but on confidence. Trust, in this context, feels less like an outcome and more like a product feature that needs to be intentionally designed.</p>
+
+    <div class="section-title">The action classification model</div>
+    <p class="body-text" style="margin-bottom:12px">Not all Seek actions carry equal risk, there's a need to classify actions based on their potential impact before determining the appropriate level of autonomy.</p>
+
+    <div class="stepper" style="margin-top:16px">
+      <div class="stepper-item">
+        <div class="stepper-dot green"></div>
+        <div class="stepper-title">Auto-execute</div>
+        <div class="stepper-body"><strong style="color:#4ADE80;">Low-risk</strong>, easily reversible actions such as read-only queries or simple configuration updates. Requiring confirmation for these tasks may add friction without meaningfully improving safety.</div>
+      </div>
+      <div class="stepper-item">
+        <div class="stepper-dot amber"></div>
+        <div class="stepper-title">Preview + confirm</div>
+        <div class="stepper-body"><strong style="color:#FBBF24;">Medium-risk</strong> actions with broader implications, such as modifying workflows or page layouts. A diff-style preview allows users to review the proposed changes before execution.</div>
+      </div>
+      <div class="stepper-item">
+        <div class="stepper-dot red"></div>
+        <div class="stepper-title">Explicit approval</div>
+        <div class="stepper-body"><strong style="color:#E5383B;">High-risk</strong> actions involving access controls, permissions, billing, or other changes with significant downstream consequences. These actions warrant a higher degree of oversight, with approvals and auditability built into the experience.</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:28px">Governance requirements for enterprise buyers</div>
+    <div class="two-col" style="margin-top:12px">
+      <div class="card">
+        <div class="card-title"><i class="ti ti-file-description" aria-hidden="true"></i> Audit trail</div>
+        <div class="card-body">Every Seek action should be traceable, capturing who initiated it, what was executed, and what changed.</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="ti ti-rotate-clockwise" aria-hidden="true"></i> Rollback design</div>
+        <div class="card-body">The ability to reverse actions should be considered upfront, with clear expectations around what can and cannot be undone.</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="ti ti-eye" aria-hidden="true"></i> Explainability</div>
+        <div class="card-body">Users and compliance teams should be able to understand <em>why</em> Seek took an action, not just what action was taken.</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="ti ti-shield" aria-hidden="true"></i> Scope limits</div>
+        <div class="card-body">Some actions may warrant hard product-level boundaries rather than relying solely on model judgment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cost & Efficiency -->
+  <div class="section" id="cost">
+    <div class="section-label">Token efficiency &amp; agent cost optimization</div>
+    <p class="body-text">This is the problem that kills enterprise AI products quietly. Uber burned its entire 2026 AI budget in 4 months after giving 5,000 engineers access to Claude Code. Enterprise token consumption has grown 13x since January 2025. For an agentic product like Seek, the cost multiplier is geometric; every sub-task, every retry, every screenshot sent to the vision model costs tokens.</p>
+
+    <div class="stat-row">
+      <div class="stat-display">
+        <div class="stat-number">13×</div>
+        <div class="stat-desc">Token consumption growth since Jan 2025</div>
+        <div class="stat-body">Driven by agentic workflows, longer context windows, and more use cases, not more users.</div>
+      </div>
+      <div class="stat-display">
+        <div class="stat-number">4,500×</div>
+        <div class="stat-desc">Price spread between cheapest and most expensive LLMs</div>
+        <div class="stat-body">$0.04/M tokens at the low end. $180/M at the frontier. Model routing is a margin problem disguised as an engineering choice.</div>
+      </div>
+    </div>
+
+    <div class="section-title">Where tokens get wasted in agentic systems</div>
+    <div class="card" style="margin-top:12px">
+      <table>
+        <tbody>
+          <tr>
+            <td style="width:180px">Full-context resend</td>
+            <td>Resending the entire execution history at every step causes token usage to scale with task complexity. One question worth exploring is how much context is actually needed for reliable execution.</td>
+          </tr>
+          <tr class="row-alt">
+            <td>Screenshot overload</td>
+            <td>Processing full-page screenshots when only a few UI elements matter introduces avoidable overhead. More selective context may offer a better balance between accuracy and efficiency.</td>
+          </tr>
+          <tr>
+            <td>Retry storms</td>
+            <td>Retrying failures with the same model can quickly inflate costs. Escalation strategies that adapt based on failure patterns may prove more effective.</td>
+          </tr>
+          <tr class="row-alt">
+            <td>Frontier model defaults</td>
+            <td>Simpler tasks may not justify frontier models. Routing requests based on task complexity could improve unit economics without degrading the experience users perceive.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:16px">
+      <div class="callout-text"><strong>PM perspective for cost:</strong> What stood out to me was that token efficiency is as much a product consideration as it is an engineering one. Choices around context, retries, and model selection directly influence unit economics, making cost governance essential for sustainable enterprise adoption.
+</div>
+    </div>
+    <button class="explore-btn" onclick="togglePanel('routingPanel', 'overlayRouting')">Optional Technical Deep Dive on Design routing policy <span>→</span></button>
+  </div>
+
+  <!-- 30-Day Questions -->
+  <div class="section" id="questions">
+    <div class="section-label">What I'd want to learn in the first 30 days</div>
+    <p class="body-text">These aren't softballs. They're the questions where the answers would most change how I think about what to build and what to prioritize.</p>
+
+    <div class="q-list">
+      <div class="q-item">
+        <div class="q-num">01</div>
+        <div class="q-title">On the product</div>
+        <div class="q-body">What's the current failure mode distribution in Seek's Salesforce testing : is it more often wrong action, partial completion, or misunderstood intent? The answer completely changes where engineering effort should go next.</div>
+      </div>
+      <div class="q-item">
+        <div class="q-num">02</div>
+        <div class="q-title">On the users</div>
+        <div class="q-body">Which Salesforce admin tasks do early users trust Seek with vs which ones do they still do manually, and why? Trust calibration in real customer environments is likely to be as important as lab performance.</div>
+      </div>
+      <div class="q-item">
+        <div class="q-num">03</div>
+        <div class="q-title">On the technical constraints</div>
+        <div class="q-body">What's the current per-task token cost for a representative Salesforce admin task, and how does that compare to what enterprise buyers are willing to pay per automation? If the unit economics don't work at scale, everything else is secondary.</div>
+      </div>
+      <div class="q-item">
+        <div class="q-num">04</div>
+        <div class="q-title">On the go-to-market</div>
+        <div class="q-body">Does Seek sell as part of the existing Whatfix DAP contract, or does it need a separate procurement motion? The answer changes who the real buyer is and what success metrics the PM should own.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Side panels -->
+  <div class="panel-overlay" id="overlayTech" onclick="togglePanel('techPanel', 'overlayTech')"></div>
+  <div class="panel" id="techPanel">
+    <div class="panel-header">
+      <span>Optional Technical Deep Dives</span>
+      <button class="panel-close" onclick="togglePanel('techPanel', 'overlayTech')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="panel-content">
+      <h3>Context Engineering Trade-offs</h3>
+      <p>One of the more interesting trade-offs I found while thinking through Seek's architecture was around context engineering. The amount of context supplied to an agent directly influences both action quality and operating cost. Passing the entire execution history and UI state through every reasoning cycle maximizes completeness, but it also causes token consumption to scale with task complexity.</p>
+      <div style="border-left: 2px solid #E5383B; padding: 10px 0 10px 16px; margin: 16px 0; background: #1A0A0A;">
+        <p style="margin: 0; color: #A0A0A0; font-size: 13px; line-height: 1.75;">This creates a natural tension. More context can improve grounding and reduce execution errors, whereas less context reduces latency and operating costs but may increase the risk of incorrect actions. There is unlikely to be a single "correct" answer that applies across all workflows.</p>
+      </div>
+      <div style="border-left: 2px solid #4ADE80; padding: 10px 0 10px 16px; margin: 16px 0; background: #0A1A0A;">
+        <p style="margin: 0; color: #A0A0A0; font-size: 13px; line-height: 1.75;">My instinct would be to optimize for the minimum context required to complete a task reliably, rather than maximizing context by default. This becomes increasingly important as token costs compound across high-volume enterprise workflows.</p>
+      </div>
+      <p>For repetitive tasks, approaches such as <strong>page-indexed retrieval</strong> and <strong>reusable prompt templates</strong> may preserve grounding while avoiding the need to repeatedly pass the full interaction history to the model. This raises an interesting question: should every task be treated identically, or can different categories of workflows operate with different context strategies?</p>
+      <p>Ultimately, the challenge is not to maximize context at any cost, but to balance:</p>
+      <ul>
+        <li><strong>Accuracy</strong></li>
+        <li><strong>Latency</strong></li>
+        <li><strong>Token expenditure</strong></li>
+        <li><strong>User trust</strong></li>
+      </ul>
+      <p>in a way that remains sustainable at enterprise scale. The objective is to identify the minimum context necessary for Seek to execute tasks confidently, consistently, and economically.</p>
+    </div>
+  </div>
+
+  <div class="panel-overlay" id="overlayTrust" onclick="togglePanel('trustPanel', 'overlayTrust')"></div>
+  <div class="panel" id="trustPanel">
+    <div class="panel-header">
+      <span>Trust &amp; Accountability</span>
+      <button class="panel-close" onclick="togglePanel('trustPanel', 'overlayTrust')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="panel-content">
+      <h3>Trust Checkpoint: Preserving Accountability</h3>
+      <p>What stood out to me was that the trust checkpoint is not primarily about preventing mistakes—it's about preserving accountability. A Salesforce administrator is accountable by role, risk-calibrated through experience, operating under time pressure, and often subject to audit requirements. The way Seek handles trust directly influences whether users are willing to delegate meaningful work to it.</p>
+      <p>Three distinct failure modes appear particularly important to account for:</p>
+      <ul>
+        <li><strong>Silent wrong action:</strong> Seek executes successfully but performs an unintended action.</li>
+        <li><strong>Correct action, wrong scope:</strong> The intended operation is applied to the wrong records, users, or environments.</li>
+        <li><strong>Partial completion:</strong> A multi-step workflow completes incompletely, leaving the system in an inconsistent state.</li>
+      </ul>
+      <p>One approach I found compelling was to think about trust as a layered mechanism rather than a single approval prompt:</p>
+      <div style="border-left: 2px solid #FBBF24; padding: 10px 0 10px 16px; margin: 16px 0; background: #1A1400;">
+        <p style="margin: 0; color: #A0A0A0; font-size: 13px; line-height: 1.75;"><strong>Intent confirmation:</strong> Validate the user's objective before execution begins.<br><br>
+        <strong>Execution transparency:</strong> Provide visibility into what Seek is doing while a task is in progress.<br><br>
+        <strong>Risk-based intervention:</strong> Differentiate between actions that can auto-execute, require preview, or need explicit approval.<br><br>
+        <strong>Outcome verification:</strong> Confirm what Seek was able to validate after execution and surface any residual uncertainty.</p>
+      </div>
+      <p>Another question I would seek to validate is how accountability should evolve over time. Should trust increase as users build confidence through successful interactions? Conversely, what events should reset that trust and reintroduce safeguards? These decisions may ultimately influence adoption just as much as the underlying model performance.</p>
+    </div>
+  </div>
+
+  <div class="panel-overlay" id="overlayRouting" onclick="togglePanel('routingPanel', 'overlayRouting')"></div>
+  <div class="panel" id="routingPanel">
+    <div class="panel-header">
+      <span>Cost-Aware Routing</span>
+      <button class="panel-close" onclick="togglePanel('routingPanel', 'overlayRouting')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="panel-content">
+      <h3>Technical Deep Dive: Cost-Aware Model Routing</h3>
+      <p>One hypothesis I found compelling was that Seek should not default to its most capable models. Different classes of tasks demand different levels of reasoning, making routing an important lever for balancing capability, latency, and cost.</p>
+
+      <p><strong>Suggested Routing Approach</strong></p>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:130px">Task Type</th>
+            <th>Example</th>
+            <th>Suggested Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Read-only queries</td>
+            <td>"Show all validation rules"</td>
+            <td>Lightweight models</td>
+          </tr>
+          <tr>
+            <td>Single-step configuration</td>
+            <td>Field rename, picklist update</td>
+            <td>Mid-tier models</td>
+          </tr>
+          <tr>
+            <td>Multi-step configuration</td>
+            <td>Validation rules, flows</td>
+            <td>Frontier models</td>
+          </tr>
+          <tr>
+            <td>High-risk actions</td>
+            <td>Permissions, sharing rules, bulk operations</td>
+            <td>Frontier models with explicit approval</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Retry Philosophy</strong></p>
+      <p>Failures should not trigger unbounded retries. One approach worth validating would be to progressively enrich context, escalate model capability when appropriate, and surface unresolved cases to the user once the expected value of additional retries diminishes.</p>
+
+      <p><strong>Context Controls</strong></p>
+      <p>Potential cost controls include:</p>
+      <ul>
+        <li>Summarizing completed steps rather than carrying full histories forward,</li>
+        <li>Restricting visual inputs to relevant screen regions rather than processing entire screens,</li>
+        <li>Anchoring execution against an approved task plan instead of repeatedly reconstructing intent.</li>
+      </ul>
+
+      <div class="panel-callout">What this highlighted for me is that model selection cannot be treated as an implementation detail. Decisions around routing directly influence customer experience, operating margins, and ultimately the economic viability of enterprise-scale adoption.</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Written by Tanya Singh · SAP Labs · AI Product Developer and Product Management · Scholar<br>
+    📧 taanyasinghp2001@gmail.com · 📞 +91 7022894582 · <a href="https://www.linkedin.com/in/taanyyasingh">LinkedIn</a> · <a href="https://github.com/tanyasinghp">GitHub</a>
+  </div>
+
+</div>
+
+<script>
+function sendPrompt(text) {
+  console.log('Explore prompt:', text);
+  alert('Prompt sent: ' + text);
+}
+
+// Tab switching + scroll spy
+const tabs = document.querySelectorAll('.tab');
+const sections = {};
+document.querySelectorAll('.section').forEach(s => {
+  sections[s.id] = s;
+});
+
+function activateTab(id) {
+  tabs.forEach(t => {
+    t.classList.toggle('active', t.dataset.section === id);
+  });
+}
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', function(e) {
+    const id = this.dataset.section;
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+    activateTab(id);
+  });
+});
+
+// Scroll spy
+function updateActiveTabOnScroll() {
+  const scrollY = window.scrollY;
+  const viewportH = window.innerHeight;
+  let activeId = 'context';
+
+  document.querySelectorAll('.section').forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const sectionTop = rect.top + scrollY;
+    const sectionBottom = sectionTop + rect.height;
+    const triggerLine = scrollY + viewportH * 0.4;
+
+    if (triggerLine >= sectionTop && triggerLine < sectionBottom) {
+      activeId = section.id;
+    }
+  });
+
+  activateTab(activeId);
+}
+
+let ticking = false;
+window.addEventListener('scroll', function() {
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      updateActiveTabOnScroll();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// Eval bar animation on scroll into view
+let evalsAnimated = false;
+const evalFills = document.querySelectorAll('.eval-fill');
+
+function animateEvalBars() {
+  if (evalsAnimated) return;
+  const evalsSection = document.getElementById('evals');
+  if (!evalsSection) return;
+  const rect = evalsSection.getBoundingClientRect();
+  const viewportH = window.innerHeight;
+
+  if (rect.top < viewportH * 0.85 && rect.bottom > 0) {
+    evalsAnimated = true;
+    evalFills.forEach(bar => {
+      const width = bar.dataset.width || 0;
+      setTimeout(() => {
+        bar.style.width = width + '%';
+      }, 100);
+    });
+    window.removeEventListener('scroll', checkEvalsScroll);
+  }
+}
+
+function checkEvalsScroll() {
+  if (!evalsAnimated) animateEvalBars();
+}
+
+window.addEventListener('scroll', checkEvalsScroll);
+window.addEventListener('load', function() {
+  setTimeout(animateEvalBars, 300);
+});
+
+// Side panels
+function togglePanel(panelId, overlayId) {
+  const panel = document.getElementById(panelId);
+  const overlay = document.getElementById(overlayId);
+  const isOpen = panel.classList.contains('open');
+
+  // Close all panels first
+  document.querySelectorAll('.panel.open').forEach(p => p.classList.remove('open'));
+  document.querySelectorAll('.panel-overlay.open').forEach(o => o.classList.remove('open'));
+
+  if (!isOpen) {
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+</script>
+
+</body>
+</html>
